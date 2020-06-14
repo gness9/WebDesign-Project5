@@ -1,0 +1,142 @@
+/** site.js 
+ * You should add your CSS code to this file.  
+ * See the assignment description in Guide for what
+ * your code needs to accomplish.
+ */
+
+
+#boxes{
+  display:grid;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  grid-template-columns: 15% 2fr 15% 1fr;
+}
+
+.goney > button {
+  display: none;
+}
+
+button
+{
+  padding-left: 1em;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+}
+
+.gone {
+  display: block;
+}
+
+p {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.subconcept {
+  display:none;
+}
+
+.practices {
+  display:none;
+}
+
+.more {
+  display:none;
+}
+
+.less {
+  display:none;
+}
+
+.div0 {
+  display: grid;
+  background-color: lightgray;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  grid-template-columns: 15% 2fr 15% 1fr;
+}
+
+.div1 {
+  /*color: purple;*/
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.div2 {
+ /* color: blue;*/
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.div3 {
+  color: grey;
+  font-style: italic;
+}
+
+.div5 {
+  /*color: green;*/
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.div6{
+ /* color:red;*/
+  border-bottom: 1px solid grey;
+}
+
+@media (max-width: 750px) {
+  #boxes {
+    grid-template-columns: 1fr;
+    border-right: none;
+  }
+  
+  .div0 {
+    display: none;
+  }
+  
+  .div1 {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    background-color: lightgray;
+  }
+  
+  .div5 {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+  }
+  
+  .div6{
+    border-right: 1px solid gray;
+  }
+  
+  .subconcept {
+    display: block;
+    color: gray;
+  }
+  
+  .practices {
+    display: block;
+    color: gray;
+  }
+  
+  .more {
+    display: block;
+    color: gray;
+  }
+  
+  .less {
+    display: block;
+    color: gray;
+  }
+  
+  .gone {
+    display: none;
+  }
+  
+}
