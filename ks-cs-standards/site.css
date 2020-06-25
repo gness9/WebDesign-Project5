@@ -10,7 +10,7 @@
   border-top: 1px solid grey;
   border-left: 1px solid grey;
   border-right: 1px solid grey;
-  grid-template-columns: 15% 2fr 15% 1fr;
+  grid-template-columns: 15% 40% 15% 15% 15%; /*1fr;*/
 }
 
 .goney > button {
@@ -37,6 +37,10 @@ p {
   margin-bottom: 8px;
 }
 
+.concept {
+  display:none;
+}
+
 .subconcept {
   display:none;
 }
@@ -59,7 +63,7 @@ p {
   border-top: 1px solid grey;
   border-left: 1px solid grey;
   border-right: 1px solid grey;
-  grid-template-columns: 15% 2fr 15% 1fr;
+  grid-template-columns: 15% 40% 15% 15% 15%;
 }
 
 .div1 {
@@ -88,6 +92,14 @@ p {
 .div6{
  /* color:red;*/
   border-bottom: 1px solid grey;
+  /*NEW*/
+  border-right: 1px solid grey;
+}
+
+/*NEW*/
+.div7{
+ /* color:red;*/
+  border-bottom: 1px solid grey;
 }
 
 @media (max-width: 750px) {
@@ -112,6 +124,11 @@ p {
   }
   
   .div6{
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+  }
+  
+  .div7{
     border-right: 1px solid gray;
   }
   
@@ -121,6 +138,11 @@ p {
   }
   
   .practices {
+    display: block;
+    color: gray;
+  }
+  
+  .concept {
     display: block;
     color: gray;
   }

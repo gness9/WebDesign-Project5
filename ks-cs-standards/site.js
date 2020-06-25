@@ -37,14 +37,17 @@ function checkStandards(standard){
 
 //Generates standard elements to the DOM using JSON file as basis
 function writeStandards() {
-  standards.forEach(function(element){
-    var match = checkStandards(element);
+ // standards.forEach(function(element){
+  for(var key in dict)
+    {
+    var element = dict[key];
+    var match = element;
     if(match)
       {
         test = 1;
         for(key in match){
           if(test == 4){ test+=1; continue; }
-          if(match[key] == match["concept"]){ continue; }
+          //if(match[key] == match["concept"]){ continue; }
           var tag = document.createElement("div");
           var Othertag = document.createElement("p");
           tag.classList.add("div"+test);
@@ -65,7 +68,8 @@ function writeStandards() {
           table.appendChild(tag); 
         }
       }
-  });
+    }
+  //});
   updateStandards();
 }
   
@@ -103,23 +107,30 @@ function updateStandards() {
   var div3 = document.querySelectorAll(".div3");
   var div5 = document.querySelectorAll(".div5");
   var div6 = document.querySelectorAll(".div6");
+  var div7 = document.querySelectorAll(".div7");
   var y = document.querySelectorAll(".sec2");
   var sec3 = document.querySelectorAll(".sec3");
   var sec4 = document.querySelectorAll(".sec4");
 
-  //Generates Subconcept and Standard titles on mobile devices
+  //Generates Concept, Subconcept, and Standard titles on mobile devices
   test=0;
   div5.forEach(function(button){
+    /*NEW*/
+    var tagTwo = document.createElement("p");
+    var textTwo = document.createTextNode("Concept");
     var tagThree = document.createElement("p");
     var textThree = document.createTextNode("Subconcept");
     var tagFour = document.createElement("p");
     var textFour = document.createTextNode("Practices");
     tagThree.appendChild(textThree);
     tagFour.appendChild(textFour);
+    tagTwo.appendChild(textTwo);
+    tagTwo.classList.add('concept');
     tagThree.classList.add('subconcept');
     tagFour.classList.add('practices');
-    div5[test].insertBefore(tagThree, div5[test].firstChild);
-    div6[test].insertBefore(tagFour, div6[test].firstChild);
+    div5[test].insertBefore(tagTwo, div5[test].firstChild);
+    div6[test].insertBefore(tagThree, div6[test].firstChild);
+    div7[test].insertBefore(tagFour, div7[test].firstChild);
     test+=1;
   });
 
@@ -140,24 +151,25 @@ function updateStandards() {
     tagFour.classList.add('less'+test);
     tag.classList.add('dialog');
     x2[test].insertBefore(tagThree, x2[test].firstChild);
-    div6[test].appendChild(tag);
+    div7[test].appendChild(tag);
     test+=1;
   });
 
 
   //Removes elements when less button is pressed and adds in more display
-  div6.forEach(function(dialog){
+  div7.forEach(function(dialog){
     var buttons = dialog.querySelectorAll('.less');
     buttons.forEach(function(button){
     button.addEventListener('click', function(){
       var testy=0;
       dialog.classList.add('gone');
-      div6.forEach(function(dialog){
+      div7.forEach(function(dialog){
       if(dialog.className != "div6")
         {
           x2[testy].classList.remove('goney');
           div3[testy].classList.add('gone');
           div5[testy].classList.add('gone');
+          div6[testy].classList.add('gone');
         }
       testy+=1;
       });
@@ -180,6 +192,7 @@ function updateStandards() {
           div3[testy].classList.remove('gone');
           div5[testy].classList.remove('gone');
           div6[testy].classList.remove('gone');
+          div7[testy].classList.remove('gone');
         }
       testy+=1;
       });
@@ -199,6 +212,7 @@ function updateStandards() {
           div3[test].classList.add('gone');
           div5[test].classList.add('gone');
           div6[test].classList.add('gone');
+          div7[test].classList.add('gone');
           test+=1;
       });
 
