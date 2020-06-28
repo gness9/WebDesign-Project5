@@ -13,6 +13,57 @@
   grid-template-columns: 15% 40% 15% 15% 15%; /*1fr;*/
 }
 
+#bodycheck{
+  margin: 0;
+}
+
+#top{
+  padding-left: 0;
+  background-image: linear-gradient(#4f2684,#7132bf);
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.head{
+  padding-left: 0.5em;
+  margin: 0;
+  color: #fff;
+}
+
+.intro{
+  padding-right: 25%;
+  padding-left: 1em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /*background-color: lightgray;*/
+}
+
+#left{
+  padding-left: 0;
+  margin: 0;
+}
+
+a{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  text-decoration: none;
+  color: white;
+  background-color:#28282c;
+  border-radius: 4px;
+  
+}
+
+a:visited {
+  color: none;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+
 .goney > button {
   display: none;
 }
