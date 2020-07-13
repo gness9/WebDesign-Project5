@@ -15,7 +15,7 @@ function handleRequest(req, res) {
     
   fs.stat(path.join("public", pathname), (err, stat) => {
     // TODO: Serve file or list directory
-    //console.log("MADE IT");
+    //console.log(stat);
     if(err) { console.log(err); return res.writeHead(404).end(); }
     if(stat.isFile()) return serveFile(req, res);
     if(stat.isDirectory()) return listDirectory(req, res);

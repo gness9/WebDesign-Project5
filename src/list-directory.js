@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const serveFile = require('./serve-file');//For Index Implementation
+const serveStandards = require('./serve-standards');//For Index Implementation
 /** @module listDirectory
  * Provides a function for serving a directory listing
  * for the directory matching the pathname in the req.url 
@@ -20,6 +21,9 @@ function listDirectory(req, res) {
         serveFile(req, res);
         return;
       }
+    
+      serveStandards(req,res)
+      /*
       console.log("CHECKTWO");
       var pathHeader = `<h2>Directory Listing for ${pathname}</h2>`;
       var listing = entries.map(entry => {
@@ -44,7 +48,7 @@ function listDirectory(req, res) {
       res.writeHeader(200, {
         "Content-Type": "text/html",
         "Content-Length": html.length
-      }).end(html);
+      }).end(html);*/
   });
 }
 

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Directory Listing</title>
+    </head>
+    <body>
+        <h2>Directory Listing for <%= pathname %></h2>
+        <div style="display: flex; flex-direction: column; padding: 2rem 0">
+        <% entries.forEach((entry) =>{ %>
+            <a href="<%= path.posix.join(pathname, entry) %>">
+                <%= entry %>
+            </a>
+        <% }) %>
+        </div>
+        <% if (pathname !== "/") { %>
+            <a href="<%= path.dirname(pathname) %>">
+                Parent directory
+            </a>
+        <% } %>
+    </body>
+</html>
