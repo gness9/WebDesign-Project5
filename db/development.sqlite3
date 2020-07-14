@@ -1,0 +1,7 @@
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY ASC,
+  title TEXT,
+  content TEXT,
+  date INTEGER
+);
+INSERT INTO posts (title, content, date) VALUES ('Hello', 'Hello Blog!', ${Date.now()});

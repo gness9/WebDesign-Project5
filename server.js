@@ -1,5 +1,6 @@
 const handleRequest = require('./src/handle-request');
 const http = require('http');
+require('./src/database');
 const port = 3000;
 
 /*

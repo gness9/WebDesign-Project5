@@ -11,7 +11,7 @@ var test = 1;
 var table = document.getElementById('boxes');
 
 //Creates dictionary for all JSON elements with identifier as key
-function displayStandards(data) {
+/*function displayStandards(data) {
     var current = data[0].identifier;
   var count = 0;
   data.forEach(function(element){
@@ -33,8 +33,9 @@ function checkStandards(standard){
         }
     }
   return undefined;
-}
+}*/
 
+/*
 //Generates standard elements to the DOM using JSON file as basis
 function writeStandards() {
  // standards.forEach(function(element){
@@ -95,11 +96,11 @@ function useXHR() {
 //Delays execution until load event is triggered.
 window.addEventListener('load', function(){
 useXHR();
-});
+});*/
   
 
 //Updates elements and generates titles
-function updateStandards() {
+//function updateStandards() {
   //Retrieves necessary DOM elements
 
   var x = document.querySelectorAll(".div1");
@@ -232,4 +233,4 @@ function updateStandards() {
   var element = window.matchMedia("(max-width: 750px)");
   changeStandard(element);
   element.addListener(changeStandard);
- }
+ //}
