@@ -22,7 +22,7 @@ function listDirectory(req, res) {
         return;
       }
     
-      serveStandards(req,res)
+      serveStandards(req,res);
       /*
       console.log("CHECKTWO");
       var pathHeader = `<h2>Directory Listing for ${pathname}</h2>`;
