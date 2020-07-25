@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Kansas Computer Science Standards</title>
+        <link href="site.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="#" />
+    </head>
+    <body>
+        <h1>
+          <b>Kansas Computer Science Standards</b>
+        </h1>
+        <div class="div0">
+          <p>Identifier</p>
+          <p>Standard</p>
+          <p>Concept</p>
+          <p>Subconcept</p>
+          <p>Practices</p>
+        <div>
+        </div>
+        </div>
+        <div id="boxes">
+          <% queries.forEach((query) =>{ %>
+            <div class="div1">
+               <p class="sec1"><%= query.identifier %></p>
+            </div>
+            <div class="div2">
+              <p class="sec2"><%= query.description %></p>
+              <p class="div3"><%= query.summary %></p>
+            </div>
+            <div class="div5">
+              <p class="sec5"><%= query.concept %></p>
+            </div>
+            <div class="div6">
+              <p class="sec6"><%= query.subconcept %></p>
+            </div>
+            <div class="div7">
+              <p class="sec7"><%= query.practices %></p>
+            </div>
+          <% }) %>
+        </div>
+        <script src="site.js"></script>
+    </body>
+</html>
