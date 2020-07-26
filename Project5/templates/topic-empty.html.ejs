@@ -12,6 +12,8 @@
             <% if(locals.user) { %>
               Welcome <%= user.username %>!
               <a href="/forum/topics/new">Create a Topic</a>
+            or
+              <a href="/forum/topics/<%= id %>/posts">Create a Post</a>
             <% } else { %>
             <a href="/signin">Sign In</a> 
             or
@@ -21,9 +23,9 @@
         </header>
         <header>
           <div>
-            <a href="/">Home</a>
-             <a href="/standards">Standards</a>
-             <a href="/forum">Forum</a>
+          <a href="/">Home</a>
+           <a href="/standards">Standards</a>
+           <a href="/forum">Forum</a>
           </div>
         </header>
       <a href="/signout">Sign Out</a>
@@ -40,24 +42,7 @@
         </div>
         </div>
         <div id="boxes">
-          <% queries.forEach((query) =>{ %>
-            <div class="div1">
-               <div class="sec1"><a href="/forum/topics/<%= query.id %>"><%= query.subject %></a></div>
-            </div>
-            <div class="div2">
-                <p class="sec2"><%= query.creator %></p>
-                <p class="div3"><%= query.summary %></p>
-              </div>
-            <div class="div5">
-              <p class="sec5"><%= query.postCount %></p>
-            </div>
-            <div class="div6">
-              <p class="sec6"><%= query.date %></p>
-            </div>
-              <div class="div7">
-                <p class="sec7"><%= query.id %></p>
-              </div>
-          <% }) %>
+            <h1>NO POSTS SO FAR</h1>
         </div>
         <script src="/site.js"></script>
     </body>

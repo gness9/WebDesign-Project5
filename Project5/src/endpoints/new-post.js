@@ -6,7 +6,12 @@ const templates = require('../templates');
  * @param {http.ServerResponse} res - the response object
  */
 function newPost(req, res) {
-  var html = templates["new-post.html"]();
+  
+  var data = {
+      user: req.session && req.session.user
+  };
+  
+  var html = templates["new-post.html"](data);
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-Length", "text/html");
   res.end(html);

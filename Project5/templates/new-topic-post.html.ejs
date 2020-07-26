@@ -11,14 +11,14 @@
   <div>
     <% if(locals.user) { %>
       Welcome <%= user.username %>!
-      <a href="/forum/topics/new">Create a Post</a>
-    <% } %>
-  </div>
+      <a href="/forum/topics/new">Create a Topic</a>
+    <% } else { %>
     <a href="/signin">Sign In</a> 
     or
     <a href="/signup">Sign Up</a>
+    <% } %>
+  </div>
 </header>
-<a href="/signout">Sign Out</a>
 <header>
   <div>
     <a href="/">Home</a>
@@ -26,11 +26,14 @@
      <a href="/forum">Forum</a>
   </div>
 </header>
+<a href="/signout">Sign Out</a>
 <h2>New Topic Post</h2>
-<form method="POST" action="/posts">
+<form method="POST" action="/forum/topics/<%= id %>">
   
   <label>Post Body</label>
-  <input type="text" name="subject" required/>
+  <div>
+    <input type="text" name="subject" required/>
+  </div>
   
   <input type="submit" value="Post"/>
 </form>

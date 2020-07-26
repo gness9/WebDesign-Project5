@@ -63,7 +63,8 @@ function serveStandards(req, res) {
       description: description,
       concept: concept,
       subconcept: subconcept,
-      practices: practices
+      practices: practices,
+      user: req.session && req.session.user
       //newestPost: newestPost
   };
   

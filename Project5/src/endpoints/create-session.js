@@ -64,9 +64,9 @@ function success(req, res, user) {
   //res.end(`Welcome ${user.email}.  You logged in successfully!`);
   var sid = sessions.create(user);
   
-  console.log("MADE IT BACK");
-  console.log(sid);
-  console.log("THAT WAS SID");
+  //console.log("MADE IT BACK");
+  //console.log(sid);
+  //console.log("THAT WAS SID");
   
   res.setHeader("Set-Cookie", `SID=${sid}; Secure; HTTPOnly`);
   res.statusCode = 302;

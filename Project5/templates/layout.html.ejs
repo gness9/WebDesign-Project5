@@ -11,12 +11,13 @@
           <div>
             <% if(locals.user) { %>
               Welcome <%= user.username %>!
-              <a href="/forum/topics/new">Create a Post</a>
-            <% } %>
-          </div>
+              <a href="/forum/topics/new">Create a Topic</a>
+            <% } else { %>
             <a href="/signin">Sign In</a> 
             or
             <a href="/signup">Sign Up</a>
+            <% } %>
+          </div>
         </header>
         <header>
           <div>

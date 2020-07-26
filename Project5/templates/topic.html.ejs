@@ -11,14 +11,16 @@
           <div>
             <% if(locals.user) { %>
               Welcome <%= user.username %>!
-              <a href="/forum/topics/new">Create a Post</a>
-            <% } %>
-          </div>
+              <a href="/forum/topics/new">Create a Topic</a>
+              or
+              <a href="/forum/topics/<%= id %>/posts">Create a Post</a>
+            <% } else { %>
             <a href="/signin">Sign In</a> 
             or
             <a href="/signup">Sign Up</a>
+            <% } %>
+          </div>
         </header>
-        <a href="/signout">Sign Out</a>
         <header>
           <div>
           <a href="/">Home</a>
@@ -26,6 +28,7 @@
            <a href="/forum">Forum</a>
           </div>
         </header>
+      <a href="/signout">Sign Out</a>
         <h1>
           <b>Kansas Computer Science Standards</b>
         </h1>
@@ -34,13 +37,13 @@
           <p>Author</p>
           <p>Posts</p>
           <p>Date Created</p>
-          <p>Extra</p>
+          <p>ID</p>
         <div>
         </div>
         </div>
         <div id="boxes">
             <div class="div1">
-              <div class="sec1"><a href="\forum"><%= infos.subject %></a></div>
+              <p class="sec1"><%= infos.subject %></p>
             </div>
             <div class="div2">
                 <p class="sec2"><%= infos.author %></p>
@@ -52,7 +55,7 @@
               <p class="sec6"><%= infos.date %></p>
             </div>
               <div class="div7">
-                <p class="sec7">Hi</p>
+                <p class="sec7"><%= id %></p>
               </div>
         </div>
         <script src="/site.js"></script>

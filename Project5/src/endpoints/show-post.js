@@ -30,7 +30,13 @@ function showPost(req, res) {
   
   var users = db.prepare(fs.readFileSync(querypathUser, 'utf8')).all();
   
-  //console.log(users);
+  
+   //var posts = db.prepare("SELECT * FROM posts ORDER BY date DESC").all();
+  
+  //console.log(queries.length);
+  
+  //console.log(queries);
+  
   
   queries.date = new Date(queries.date);
   
@@ -57,12 +63,13 @@ function showPost(req, res) {
       //tests: tests,
       postCount: postCount,
       queries: queries,
-      date: date
+      date: date,
+      user: req.session && req.session.user
   };
   
   //console.log(subject);
   
-  
+  //console.log(req.params.id);
   
   // Generate the HTML
   var html = templates["post.html"](data);

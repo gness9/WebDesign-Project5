@@ -17,15 +17,18 @@ var querypathStandard = '././queries/get-standard-by-id.sql';
 function showPost(req, res) {
   // Determine the post ID
   const id = parseInt(req.params.id, 10);
+  
+  //console.log(req);
   // Retreive the post from the database 
   //var post = db.prepare("SELECT * FROM posts WHERE id = ?").get(id);
   
-  var infos = db.prepare(fs.readFileSync(querypathother, 'utf8')).get(id);
+  var infos = db.prepare(fs.readFileSync(querypathother, 'utf8')).all(id);
   //var queries = db.prepare(fs.readFileSync(querypath, 'utf8')).all();
   //var query = db.prepare(fs.readFileSync(querypathother, 'utf8')).all(1);
   //var querytwo = db.prepare(fs.readFileSync(querypathStandard, 'utf8')).all(1);
   
-  console.log(infos);
+  //console.log(id);
+  //console.log(infos);
   
   var queries = db.prepare(fs.readFileSync(querypath, 'utf8')).all();
   
@@ -57,19 +60,31 @@ function showPost(req, res) {
       queries: queries,
       date: date,
       infos: infos,
+      id: id,
+      user: req.session && req.session.user
   };
   
-  //console.log(subject);
+  //console.log(queries.length-1);
+  //console.log("This is post count:");
+  //console.log(queries[queries.length-1]);
+  //console.log(infos);
+  //console.log(queries[id].postCount);
+  
+  
   
   
   if(infos == undefined)
     {
-      var html = templates["post.html"](data);
+      var html = templates["topic-empty.html"](data);
     }
-  else
+  else if(queries[queries.length-1] == 1)
     {
       //var html = templates["post.html"](data);
       var html = templates["topic.html"](data);
+    }
+  else
+    {
+      var html = templates["topic-many.html"](data);
     }
   // Generate the HTML
   

@@ -12,18 +12,19 @@
             <% if(locals.user) { %>
               Welcome <%= user.username %>!
               <a href="/forum/topics/new">Create a Topic</a>
-            <% } else { %>
+              or
+              <a href="/forum/topics/<%= id %>/posts">Create a Post</a>
+            <% } %>
+          </div>
             <a href="/signin">Sign In</a> 
             or
             <a href="/signup">Sign Up</a>
-            <% } %>
-          </div>
         </header>
         <header>
           <div>
-            <a href="/">Home</a>
-             <a href="/standards">Standards</a>
-             <a href="/forum">Forum</a>
+          <a href="/">Home</a>
+           <a href="/standards">Standards</a>
+           <a href="/forum">Forum</a>
           </div>
         </header>
       <a href="/signout">Sign Out</a>
@@ -40,22 +41,21 @@
         </div>
         </div>
         <div id="boxes">
-          <% queries.forEach((query) =>{ %>
+          <% infos.forEach((info) =>{ %>
             <div class="div1">
-               <div class="sec1"><a href="/forum/topics/<%= query.id %>"><%= query.subject %></a></div>
+              <p class="sec1"><%= info.subject %></p>
             </div>
             <div class="div2">
-                <p class="sec2"><%= query.creator %></p>
-                <p class="div3"><%= query.summary %></p>
+                <p class="sec2"><%= info.author %></p>
               </div>
             <div class="div5">
-              <p class="sec5"><%= query.postCount %></p>
+              <p class="sec5"><%= info.body %></p>
             </div>
             <div class="div6">
-              <p class="sec6"><%= query.date %></p>
+              <p class="sec6"><%= info.date %></p>
             </div>
               <div class="div7">
-                <p class="sec7"><%= query.id %></p>
+                <p class="sec7"><%= id %></p>
               </div>
           <% }) %>
         </div>

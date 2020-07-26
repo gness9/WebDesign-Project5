@@ -17,7 +17,7 @@ function serveHomepage(req, res) {
   
   var data = {
       //newestPost: newestPost
-      user: req.session.user
+      user: req.session && req.session.user
   };
   
   var html = templates['layout.html'](data);
