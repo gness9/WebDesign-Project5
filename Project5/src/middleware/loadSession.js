@@ -10,7 +10,7 @@ function loadSession(req, res, next) {
   // TODO: Load the session
   //var match = /SID=(\S+)/.exec(req.headers.cookie);
   var match = /SID=([^\s;]+)/.exec(req.headers.cookie);
-  console.log(match);
+  //console.log(match);
   if(!match) {
     // No cookie to load, so session should be empty
     req.session = {};

@@ -11,8 +11,13 @@ function serveHomepage(req, res) {
   // Get the newest post in the database
   //var newestPost = db.prepare("SELECT * FROM posts ORDER BY date DESC LIMIT 1").get();
   // Generate the post HTML
+  
+  //console.log(req.session);
+  //console.log(req.session.user.role);
+  
   var data = {
       //newestPost: newestPost
+      user: req.session.user
   };
   
   var html = templates['layout.html'](data);

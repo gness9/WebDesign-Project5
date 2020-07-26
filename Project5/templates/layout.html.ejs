@@ -7,6 +7,25 @@
         <link rel="shortcut icon" href="#" />
     </head>
     <body id="bodycheck">
+        <header>
+          <div>
+            <% if(locals.user) { %>
+              Welcome <%= user.username %>!
+              <a href="/forum/topics/new">Create a Post</a>
+            <% } %>
+          </div>
+            <a href="/signin">Sign In</a> 
+            or
+            <a href="/signup">Sign Up</a>
+        </header>
+        <header>
+          <div>
+            <a href="/">Home</a>
+             <a href="/standards">Standards</a>
+             <a href="/forum">Forum</a>
+          </div>
+        </header>
+        <a href="/signout">Sign Out</a>
         <div id="top">
           <h1 class="head">
             <b>Kansas Computer Science Standards</b>

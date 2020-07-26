@@ -7,7 +7,8 @@ module.exports = function(req, res) {
   var html = templates["sign-layout.html"]({
     title: "Sign In",
     post: form,
-    list: ""
+    list: "",
+    user: req.session && req.session.user
   });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-Length", html.length);

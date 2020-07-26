@@ -1,6 +1,7 @@
 const db = require('../database');
 const fs = require('fs');
 const path = require('path');
+const serveError = require('../serve-error');
 
 var querypath = '././queries/get-all-forum-topics.sql';
 var querypathother = '././queries/get-all-posts-for-topic.sql';
@@ -11,9 +12,19 @@ var querypathStandard = '././queries/get-standard-by-id.sql';
  * Creates a new post using the supplied form data
  */
 function createPost(req, res) {
-  var title = req.body.title;
-  var content = req.body.content;
+  var title = req.body.subject;
+  //var content = req.body.content;
   var date = new Date().valueOf();
+  
+  
+  if(req.session.user == undefined)
+    {
+      return serveError(req, res, 500, "Unable to write to database");
+    }
+  else
+    {
+      var id = req.session.user.id;
+    }
   
   // Publish the post to the database
   //var sql = fs.readFileSync('queries/get-all-standards.sql').toString();
@@ -28,16 +39,21 @@ function createPost(req, res) {
   //console.log(querytwo);
   //console.log(queriess);
   
+  console.log(title);
+  console.log(id);
+  //console.log(content);
+  
   //INSERT INTO forum_topics (subject, user_id) VALUES (?, ?);
-  var info = db.prepare(fs.readFileSync(querypathTwo, 'utf8')).run('HELLO', 1);
+  var info = db.prepare(fs.readFileSync(querypathTwo, 'utf8')).run(title, id);
   
   // Determine if the write succeeded
-  if(info.changes !== 1) return serveError(req, res, 500, "Unable to write to database");
+  if(info.changes != 1) return serveError(req, res, 500, "Unable to write to database");
 
   
   console.log(info);
   // Redirect to the read page for the post
-  res.writeHead(302, {"Location": `posts/${info.lastInsertRowid}`}).end();
+  res.writeHead(302, {"Location": `posts/${info.lastInsertRowid}`});
+  res.end();
 }
 
 module.exports = createPost;

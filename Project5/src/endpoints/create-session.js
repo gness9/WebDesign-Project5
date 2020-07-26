@@ -31,17 +31,17 @@ function createSession(req, res) {
   //console.log(password);
   
   
-  var users = db.prepare(fs.readFileSync(querypathUser, 'utf8')).all();
+  //var users = db.prepare(fs.readFileSync(querypathUser, 'utf8')).all();
   var user = db.prepare(fs.readFileSync(querypathEmail, 'utf8')).get(email);
   
   //console.log(users);
-  console.log("BREAK");
-  console.log(user.crypted_password);
-  console.log(password);
+  //console.log("BREAK");
+  //console.log(user.crypted_password);
+  //console.log(password);
   
   if(!user) return failure(req, res, "Usename/Password not found.  Please try again.");
   bcrypt.compare(password, user.crypted_password, (err, result) => {
-    console.log(result);
+    //console.log(result);
     if(err) return serveError(req, res, 500, err);
     if(result) success(req, res, user);
     else return failure(req, res, "Username/Password not found. Please try again.");
@@ -59,8 +59,15 @@ module.exports = createSession;
  * @param {object} user - the user who signed in
  */
 function success(req, res, user) {
-  res.end(`Welcome ${user.email}.  You logged in successfully!`);
+  
+  //console.log(user);
+  //res.end(`Welcome ${user.email}.  You logged in successfully!`);
   var sid = sessions.create(user);
+  
+  console.log("MADE IT BACK");
+  console.log(sid);
+  console.log("THAT WAS SID");
+  
   res.setHeader("Set-Cookie", `SID=${sid}; Secure; HTTPOnly`);
   res.statusCode = 302;
   res.setHeader("Location", "/");
@@ -82,7 +89,8 @@ function failure(req, res, errorMessage) {
   var html = templates["sign-layout.html"]({
     title: "Sign In",
     post: form,
-    list: ""
+    list: "",
+    user: req.session && req.session.user
   });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-Length", html.length);

@@ -29,6 +29,7 @@ function showPost(req, res) {
   
   var queries = db.prepare(fs.readFileSync(querypath, 'utf8')).all();
   
+  
   queries.date = new Date(queries.date);
   
   //console.log(post);

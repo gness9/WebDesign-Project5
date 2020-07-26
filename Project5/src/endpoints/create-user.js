@@ -72,7 +72,7 @@ function success(req, res, userID) {
   // Retrieve the user 
   var user = db.prepare(fs.readFileSync(querypathEmail, 'utf8')).get(userID);
   // Create session
-  sessions.create(user);
+  var sid = sessions.create(user);
   // Set session cookie
   res.setHeader("Set-Cookie", `SID=${sid}; Secure; HTTPOnly`);
   // Redirect to home page
@@ -96,7 +96,8 @@ function failure(req, res, errorMessage) {
   var html = templates["sign-layout.html"]({
     title: "Sign In",
     post: form,
-    list: ""
+    list: "",
+    user: req.session && req.session.user
   });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-Length", html.length);

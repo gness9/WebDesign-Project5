@@ -7,21 +7,40 @@
         <link rel="shortcut icon" href="#" />
     </head>
     <body>
+        <header>
+          <div>
+            <% if(locals.user) { %>
+              Welcome <%= user.username %>!
+              <a href="/forum/topics/new">Create a Post</a>
+            <% } %>
+          </div>
+            <a href="/signin">Sign In</a> 
+            or
+            <a href="/signup">Sign Up</a>
+        </header>
+        <a href="/signout">Sign Out</a>
+        <header>
+          <div>
+          <a href="/">Home</a>
+           <a href="/standards">Standards</a>
+           <a href="/forum">Forum</a>
+          </div>
+        </header>
         <h1>
           <b>Kansas Computer Science Standards</b>
         </h1>
         <div class="div0">
-          <p>Identifier</p>
-          <p>Standard</p>
-          <p>Concept</p>
-          <p>Subconcept</p>
-          <p>Practices</p>
+          <p>Topic</p>
+          <p>Author</p>
+          <p>Posts</p>
+          <p>Date Created</p>
+          <p>Extra</p>
         <div>
         </div>
         </div>
         <div id="boxes">
             <div class="div1">
-               <p class="sec1"><%= infos.subject %></p>
+              <div class="sec1"><a href="\forum"><%= infos.subject %></a></div>
             </div>
             <div class="div2">
                 <p class="sec2"><%= infos.author %></p>

@@ -1,3 +1,18 @@
+const bcrypt = require('bcrypt');
+const templates = require('./templates');
+const serveError = require('./serve-error');
+const fs = require('fs');
+const path = require('path');
+
+
+var querypath = '././queries/create-user.sql';
+var querypathEmail = '././queries/select-user-by-email.sql';
+var querypathother = '././queries/get-all-posts-for-topic.sql';
+var querypathTwo = '././queries/create-forum-topic.sql';
+var querypathStandard = '././queries/get-standard-by-id.sql';
+var querypathUser = '././queries/get-all-users.sql';
+
+
 var sessions = {};
 
 
@@ -28,13 +43,19 @@ function generateUUID() {
  * @returns {string} The session id
  */
 function createSession(user) {
+  //console.log("MADE IT TO CREATE SESSION");
   var sid = generateUUID();
-  var role = db.prepare("SELECT name FROM roles WHERE id = ?").get(user.role_id).name;
+  var role = db.prepare(fs.readFileSync(querypathEmail, 'utf8')).get(user.email);
+  //var role = db.prepare("SELECT name FROM roles WHERE id = ?").get(user.role_id).name;
+  
+  //console.log(role.email);
+  //console.log(role.id);
+  
   sessions[sid] = {
     timestamp: Date.now(),
     user: {
-      id: user.id,
-      username: user.username,
+      id: role.id,
+      username: role.email,
       role: role
     },
     data: {}
